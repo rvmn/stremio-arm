@@ -1,13 +1,13 @@
 #!/bin/bash
-if [ -z "$(node -v)" ];then
 #Checking if using armv6
 if [ ! -z "$(cat /proc/cpuinfo | grep ARMv6)" ];then
   error "armv6 cpu not supported"
 fi
 if ! command -v curl >/dev/null ; then
   echo -e "\033[0;31mcurl: command not found. Installing now...\e[39m"
-  install_packages curl || exit 1
+  sudo apt install curl -y || exit 1
 fi
+if ! command -v node > /dev/null ; then
 #Install nvm manager:
 export NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
@@ -43,7 +43,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm install node || error "Failed to install node.js with nvm!"
 source ~/.bashrc
 fi
-sudo apt-get install qtcreator qt5-qmake qt5-default g++ pkgconf libssl-dev git libmpv-dev libqt5webview5-dev libkf5webengineviewer-dev qml-module-qtwebchannel  librsvg2-bin libqt5opengl5-dev curl
+sudo apt-get install -y qtcreator qt5-qmake qt5-default g++ pkgconf libssl-dev git libmpv-dev libqt5webview5-dev libkf5webengineviewer-dev qml-module-qtwebchannel  librsvg2-bin libqt5opengl5-dev curl
 mkdir ~/apps
 git clone --recurse-submodules -j8 git://github.com/Stremio/stremio-shell.git ~/apps/stremio
 cd ~/apps/stremio

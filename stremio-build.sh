@@ -2,6 +2,7 @@
 #Checking if using armv6
 if [ ! -z "$(cat /proc/cpuinfo | grep ARMv6)" ];then
   error "armv6 cpu not supported"
+fi
 sudo apt install curl git build-essential -y
 if ! command -v node > /dev/null ; then
 echo -e "\033[0;31mnode not found. Installing now...\e[39m"
@@ -41,6 +42,7 @@ nvm install node || error "Failed to install node.js with nvm!"
 source ~/.bashrc
 fi
 sudo apt-get install -y qtcreator qt5-qmake qt5-default g++ pkgconf libssl-dev git libmpv-dev libqt5webview5-dev libkf5webengineviewer-dev qml-module-qtwebchannel  librsvg2-bin libqt5opengl5-dev curl
+sudo rm /usr/share/applications/qt*
 mkdir ~/apps
 git clone --recurse-submodules -j8 git://github.com/Stremio/stremio-shell.git ~/apps/stremio
 cd ~/apps/stremio

@@ -51,9 +51,8 @@ qmake
 make -f release.makefile
 cp ./server.js ./build/ && ln -s "$(which node)" ./build/node
 sudo curl -o /usr/share/icons/hicolor/scalable/apps/stremio.png --url https://www.stremio.com/website/stremio-logo-small.png
-sudo echo "
+sudo tee -a /usr/share/applications/stremio.desktop>/dev/null <<EOT
 [Desktop Entry]
-
 Name=Stremio
 Comment=Stremio
 Exec=~/apps/stremio/build/stremio
@@ -61,5 +60,4 @@ Icon=stremio
 Terminal=false
 Type=Application
 StartupNotify=true
-" > tee /usr/share/applications/stremio.desktop
-
+EOT

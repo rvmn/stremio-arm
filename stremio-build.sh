@@ -3,7 +3,7 @@
 if [ ! -z "$(cat /proc/cpuinfo | grep ARMv6)" ];then
   error "armv6 cpu not supported"
 fi
-sudo apt install curl git build-essential -y
+sudo apt install curl git build-essential cmake autoconf -y
 if ! command -v node > /dev/null ; then
 echo -e "\033[0;31mnode not found. Installing now...\e[39m"
 #Install nvm manager:

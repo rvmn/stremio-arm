@@ -2,12 +2,9 @@
 #Checking if using armv6
 if [ ! -z "$(cat /proc/cpuinfo | grep ARMv6)" ];then
   error "armv6 cpu not supported"
-fi
-if ! command -v curl >/dev/null ; then
-  echo -e "\033[0;31mcurl: command not found. Installing now...\e[39m"
-  sudo apt install curl -y || exit 1
-fi
+sudo apt install curl git build-essential -y
 if ! command -v node > /dev/null ; then
+echo -e "\033[0;31mnode not found. Installing now...\e[39m"
 #Install nvm manager:
 export NVM_DIR="$HOME/.nvm"
 mkdir -p "$NVM_DIR"
